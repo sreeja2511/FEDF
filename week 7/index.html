@@ -1,0 +1,143 @@
+<!DOCTYPE html> 
+<html lang="en"> 
+<head> 
+<meta charset="UTF-8"> 
+<title>Online Bookstore</title> 
+<style> 
+    /* Modern, Minimal, & Crisp */
+    :root {
+        --primary-color: #334155; /* Dark Slate Blue for main text/accents */
+        --accent-color: #0d9488; /* Teal for buttons/highlights */
+        --light-bg: #f8fafc; /* Very light gray background */
+        --card-bg: #ffffff; /* White card background */
+        --shadow-light: 0 6px 15px rgba(0,0,0,0.05);
+        --border-color: #e2e8f0;
+    }
+
+    body { 
+        font-family: 'Inter', 'Segoe UI', Arial, sans-serif; /* Modern font stack */
+        background: var(--light-bg); 
+        margin: 0; 
+        padding: 40px 20px; 
+        color: var(--primary-color);
+    } 
+
+    h1 {
+        text-align: center;
+        color: var(--primary-color);
+        margin-bottom: 40px;
+        font-weight: 700;
+        letter-spacing: -0.5px;
+    }
+
+    h2 {
+        color: var(--primary-color);
+        border-bottom: 2px solid var(--border-color);
+        padding-bottom: 10px;
+        margin-bottom: 20px;
+        font-weight: 600;
+    }
+
+    .book-list, .cart { 
+        max-width: 700px; /* Wider containers for better spacing */
+        margin: 0 auto 30px auto; 
+        background: var(--card-bg); 
+        padding: 30px; 
+        border-radius: 16px; /* Smoother edges */
+        box-shadow: var(--shadow-light); 
+        border: 1px solid var(--border-color); /* Subtle border */
+    } 
+    
+    .book { 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center; /* Vertically align content */
+        padding: 15px 0; 
+        border-bottom: 1px solid var(--border-color); 
+        transition: background-color 0.2s;
+    } 
+
+    .book:hover {
+        background-color: #f8fafc; /* Light hover effect */
+    }
+
+    .book-details {
+        text-align: left;
+    }
+
+    .book-details .title {
+        font-weight: 600;
+        font-size: 1.1em;
+        margin-bottom: 4px;
+        color: var(--primary-color);
+    }
+    
+    .book-details .price {
+        color: var(--accent-color);
+        font-weight: 700;
+    }
+
+    .book:last-child { 
+        border-bottom: none; 
+    } 
+
+    button { 
+        background: var(--accent-color); 
+        color: white; 
+        border: none; 
+        border-radius: 8px; 
+        padding: 10px 16px; 
+        cursor: pointer; 
+        font-weight: 600;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        transition: background 0.3s ease, transform 0.1s ease;
+    } 
+
+    button:hover { 
+        background: #065f46; /* Deeper teal on hover */
+        transform: translateY(-1px);
+    } 
+
+    .cart-item { 
+        display: flex; 
+        justify-content: space-between; 
+        align-items: center;
+        margin: 10px 0; 
+        padding: 8px 0;
+        border-bottom: 1px dashed var(--border-color);
+        font-size: 0.95em;
+    } 
+
+    .cart-item:last-of-type {
+        border-bottom: none;
+    }
+
+    .cart-total { 
+        font-weight: 700; 
+        margin-top: 20px; 
+        font-size: 1.2em;
+        padding-top: 10px;
+        border-top: 2px solid var(--accent-color); /* Highlight total */
+    } 
+</style> 
+</head> 
+<body> 
+<h1 style="text-align:center;">📚 Online Bookstore: The Next Chapter</h1> 
+<div class="book-list" id="bookList"></div> 
+<div class="cart"> 
+<h2>🛒 Shopping Cart</h2> 
+<div id="cartItems"></div> 
+<div class="cart-total" id="cartTotal">Total: ₹0</div> 
+</div> 
+<script type="module"> 
+import { displayBooks } from './books.js'; 
+import { updateCartUI } from './ui.js'; 
+import { cart } from './cart.js'; 
+// Display books on page load 
+displayBooks(); 
+// Initialize empty cart display 
+updateCartUI(cart); 
+</script> 
+</body> 
+</html>
